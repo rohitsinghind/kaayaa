@@ -9,10 +9,13 @@ import {Box, Container, Button , Typography, Alert,IconButton} from '@mui/materi
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function ProductList() {
 
   const params  = useParams();
+
+  const [loading, setLoading] = useState(false)
 
   const divForScroll = useRef(null);
 
@@ -21,8 +24,10 @@ export default function ProductList() {
   const [alert, setAlert] = useState("")
   
     const getProducts = async () => {
+      setLoading(true)
     const data = await axios.get(`/api/v1/product/category/${params.category}`).then((res) => {
       setProducts(res.data?.products);
+      setLoading(false)
       });
     };
   
@@ -44,8 +49,15 @@ export default function ProductList() {
     <div ref={divForScroll}></div>
     <div style={styles.container}>
         <Container maxWidth="lg" >
+
         {alert?<Alert sx={styles.alert} severity="error">{alert}</Alert>:""}
             <Typography sx={styles.text}>Showing results for "{params.category}s"</Typography>
+            {
+              loading?
+              <Box sx={styles.loadingBox}>
+                <CircularProgress />
+              </Box>
+              :
             <Box sx={styles.box}>
               {
                 products?.map((e)=>(
@@ -53,6 +65,7 @@ export default function ProductList() {
                 ))
               }
             </Box>
+            }
             {/* <Box sx={styles.btGroups}>
               <Button sx={styles.btn} variant="text" startIcon={<ArrowBackIosIcon />}>Previous</Button>
               <Typography sx={styles.pgNo}>Page 2</Typography>

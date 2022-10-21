@@ -58,5 +58,11 @@ export const styles = {
             fontSize:"16px",
 
           },
-    }
+    },
+    loadingBox:{
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        height:"60vh"
+    },
 }

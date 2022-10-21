@@ -27,6 +27,12 @@ export const styles = {
               },
             }
     },
+    loadingBox:{
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        height:"60vh"
+    },
     btGroups:{
         display:"flex",
         alignItems:"center",

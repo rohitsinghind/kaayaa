@@ -4,15 +4,20 @@ import {useParams} from "react-router-dom";
 import axios from "axios"; 
 
 import {Box, Container, Paper, Typography, Card} from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function ProductDetails() {
 
   const params  = useParams();
 
+  const [loading, setLoading] = useState(false)
+
 const [product, setProduct] = useState("")
 
   const getProduct = async () => {
+    setLoading(true)
   const data = await axios.get(`/api/v1/product/${params.id}`).then((res) => {
+    setLoading(false)
     setProduct(res.data?.product);
     });
   };
@@ -27,7 +32,14 @@ const [product, setProduct] = useState("")
 
   return (
     <>
-        <Container maxWidth="lg" sx={styles.container}>
+        
+        {
+              loading?
+              <Box sx={styles.loadingBox}>
+                <CircularProgress />
+              </Box>
+              :
+              <Container maxWidth="lg" sx={styles.container}>
         <Paper elevation={8} sx={styles.card}>
             <img style={styles.cardImg} src={product?.image?.url} alt="" />  
         </Paper> 
@@ -37,6 +49,7 @@ const [product, setProduct] = useState("")
           <Typography sx={styles.desc}>{product?.desc}</Typography>
         </Box>
         </Container>
+      }
     </>
   )
 }
