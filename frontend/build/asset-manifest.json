@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cc276917.css",
+    "main.js": "/static/js/main.dc8f4a6b.js",
+    "static/media/cardImg3.png": "/static/media/cardImg3.648333b01049d962a21d.png",
+    "static/media/cardImg2.png": "/static/media/cardImg2.ea76a23598bb4bfde9dd.png",
+    "static/media/cardImg1.png": "/static/media/cardImg1.b0ae24292a8697d062e3.png",
+    "static/media/ring-logo.jpeg": "/static/media/ring-logo.d6491f04d52c2ba2ab61.jpeg",
+    "static/media/sliderImg1.jpg": "/static/media/sliderImg1.df4914d057f4cffb4a1c.jpg",
+    "index.html": "/index.html",
+    "main.cc276917.css.map": "/static/css/main.cc276917.css.map",
+    "main.dc8f4a6b.js.map": "/static/js/main.dc8f4a6b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cc276917.css",
+    "static/js/main.dc8f4a6b.js"
+  ]
+}
